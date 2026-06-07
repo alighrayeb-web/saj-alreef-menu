@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Restaurant - Desserts Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -24,12 +25,50 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Delicious Desserts Menu</h2>
-            <p>Sweet Treats & Crepes Made with Love</p>
+    <!-- Image Slider -->
+    <section class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slides" id="slides">
+                <!-- Slide 1 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/9b4d8b/ffffff?text=Delicious+Desserts+1');">
+                    <div class="slide-content">
+                        <div class="slide-title">Delicious Desserts Menu</div>
+                        <div class="slide-description">Sweet Treats & Crepes Made with Love</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/9b4d8b/ffffff?text=Nutella+Crepes+2');">
+                    <div class="slide-content">
+                        <div class="slide-title">Nutella Crepes</div>
+                        <div class="slide-description">Fresh crepes with delicious Nutella spread</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/9b4d8b/ffffff?text=Pistachio+Treats+3');">
+                    <div class="slide-content">
+                        <div class="slide-title">Pistachio Treats</div>
+                        <div class="slide-description">Creamy pistachio filling on fresh crepes</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/9b4d8b/ffffff?text=Lotus+Biscoff+4');">
+                    <div class="slide-content">
+                        <div class="slide-title">Lotus Biscoff</div>
+                        <div class="slide-description">Delicate crepes with lotus biscoff spread</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
         </div>
+
+        <!-- Dots Navigation -->
+        <div class="dots-container" id="dots"></div>
     </section>
 
     <!-- Main Content -->
@@ -121,5 +160,47 @@
     <footer class="footer">
         <p>&copy; 2026 Saj alreef. All rights reserved. | Open from Monday --> saturday  6am - 12pm</p>
     </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Create dots
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function changeSlide(n) {
+            goToSlide(currentSlide + n);
+        }
+
+        function goToSlide(n) {
+            const slidesElement = document.getElementById('slides');
+            
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+
+            const offset = -currentSlide * 100;
+            slidesElement.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Optional: Auto-play (changes slide every 5 seconds)
+        // setInterval(() => changeSlide(1), 5000);
+    </script>
 </body>
 </html>
