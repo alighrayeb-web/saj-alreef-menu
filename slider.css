@@ -69,18 +69,7 @@
 
 /* Navigation Buttons */
 .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    color: #333;
-    font-size: 20px;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 10;
-    transition: background 0.3s ease;
+display: none;
 }
 
 /* Mobile responsive */
