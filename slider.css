@@ -75,12 +75,27 @@
     background: rgba(255, 255, 255, 0.7);
     border: none;
     color: #333;
-    font-size: 30px;
-    padding: 10px 15px;
+    font-size: 20px;
+    padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
     z-index: 10;
     transition: background 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nav-button {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
 }
 
 .nav-button:hover {
