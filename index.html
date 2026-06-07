@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Restaurant - Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -23,12 +24,50 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Food Menu</h2>
-            <p>Enjoy the wholesome taste of our sugar-free dough, crafted with just a hint of sea salt, with us your diet ,perfected.<br>استمتع بالطعم الطبيعي لعجينتنا الخالية من السكر، والمُحضرة بلمسة خفيفة من ملح البحر، معنا دايتك بخير</p>
+    <!-- Image Slider -->
+    <section class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slides" id="slides">
+                <!-- Slide 1 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/2c5aa0/ffffff?text=Food+Menu+1');">
+                    <div class="slide-content">
+                        <div class="slide-title">Food Menu</div>
+                        <div class="slide-description">Enjoy the wholesome taste of our sugar-free dough, crafted with just a hint of sea salt, with us your diet ,perfected.</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/2c5aa0/ffffff?text=Fresh+Bread+2');">
+                    <div class="slide-content">
+                        <div class="slide-title">Fresh Bread</div>
+                        <div class="slide-description">Artisan-crafted bread baked fresh daily with premium ingredients</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/2c5aa0/ffffff?text=Delicious+Sandwiches+3');">
+                    <div class="slide-content">
+                        <div class="slide-title">Delicious Sandwiches</div>
+                        <div class="slide-description">Try our signature sandwiches with premium meats and fresh vegetables</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide" style="background-image: url('https://via.placeholder.com/1200x400/2c5aa0/ffffff?text=Italian+Pizza+4');">
+                    <div class="slide-content">
+                        <div class="slide-title">Italian Pizza</div>
+                        <div class="slide-description">Wood-fired pizzas with authentic Italian recipes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
         </div>
+
+        <!-- Dots Navigation -->
+        <div class="dots-container" id="dots"></div>
     </section>
 
     <!-- Main Content -->
@@ -189,5 +228,47 @@
     <footer class="footer">
         <p>&copy; 2026 Saj Alreef. All rights reserved. | Opens from Monday -->saturday 6am - 12pm</p>
     </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Create dots
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function changeSlide(n) {
+            goToSlide(currentSlide + n);
+        }
+
+        function goToSlide(n) {
+            const slidesElement = document.getElementById('slides');
+            
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+
+            const offset = -currentSlide * 100;
+            slidesElement.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Optional: Auto-play (changes slide every 5 seconds)
+        // setInterval(() => changeSlide(1), 5000);
+    </script>
 </body>
 </html>
