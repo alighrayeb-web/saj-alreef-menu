@@ -2,7 +2,7 @@
 
 .slider-container {
     width: 100%;
-    background: linear-gradient(135deg, #4a7c9e 0%, #a94b8f 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #ea580c 100%);
     border-radius: 0;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -12,7 +12,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: linear-gradient(135deg, #4a7c9e 0%, #a94b8f 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #ea580c 100%);
 }
 
 .slides {
@@ -67,6 +67,7 @@
     max-width: 800px;
     margin: 0 auto;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
 }
 
 /* Navigation Buttons */
@@ -107,7 +108,7 @@ display: none;
     justify-content: center;
     gap: 10px;
     padding: 20px;
-    background: linear-gradient(135deg, #4a7c9e 0%, #a94b8f 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #ea580c 100%);
 }
 
 .dot {
