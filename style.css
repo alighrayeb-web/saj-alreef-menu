@@ -123,11 +123,26 @@ body {
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     border-left: 5px solid var(--secondary-color);
+    cursor: pointer;
+    overflow: hidden;
 }
 
 .menu-item:hover {
     box-shadow: var(--shadow-hover);
     transform: translateY(-5px);
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover .item-image {
+    transform: scale(1.05);
 }
 
 .item-header {
@@ -159,6 +174,99 @@ body {
     font-size: 0.95rem;
     font-style: italic;
     margin: 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: var(--text-color);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--secondary-color);
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.modal-details {
+    text-align: center;
+}
+
+.modal-details h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-ingredients {
+    color: #666;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    background-color: var(--light-bg);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 /* Footer */
@@ -214,6 +322,24 @@ body {
     .item-name {
         font-size: 1.1rem;
     }
+
+    .item-image {
+        height: 180px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 1.5rem;
+    }
+
+    .modal-image {
+        height: 250px;
+    }
+
+    .modal-details h2 {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -261,5 +387,33 @@ body {
 
     .item-ingredients {
         font-size: 0.85rem;
+    }
+
+    .item-image {
+        height: 150px;
+        margin-bottom: 0.8rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 30% auto;
+        padding: 1rem;
+    }
+
+    .modal-image {
+        height: 200px;
+        margin-bottom: 1rem;
+    }
+
+    .modal-details h2 {
+        font-size: 1.3rem;
+    }
+
+    .modal-price {
+        font-size: 1.2rem;
+    }
+
+    .close {
+        font-size: 1.5rem;
     }
 }
