@@ -72,7 +72,8 @@
                 <h3 class="category-title">🧇 Saj Crepes</h3>
                 
                 <div class="menu-items">
-                    <div class="menu-item">
+                    <div class="menu-item" onclick="openModal(this)">
+                        <img class="item-image" src="IMG_9161.PNG" alt="Nutella Crepe">
                         <div class="item-header">
                             <h4 class="item-name">Nutella</h4>
                             <span class="item-price">$6.99</span>
@@ -80,7 +81,8 @@
                         <p class="item-ingredients">Delicious Nutella spread on fresh crepe</p>
                     </div>
 
-                    <div class="menu-item">
+                    <div class="menu-item" onclick="openModal(this)">
+                        <img class="item-image" src="IMG_9162.PNG" alt="Pistachio Crepe">
                         <div class="item-header">
                             <h4 class="item-name">Pistachio</h4>
                             <span class="item-price">$5.99</span>
@@ -88,7 +90,8 @@
                         <p class="item-ingredients">Creamy pistachio filling on fresh crepe</p>
                     </div>
 
-                    <div class="menu-item">
+                    <div class="menu-item" onclick="openModal(this)">
+                        <img class="item-image" src="IMG_9145.PNG" alt="Lotus Crepe">
                         <div class="item-header">
                             <h4 class="item-name">Lotus</h4>
                             <span class="item-price">$7.99</span>
@@ -149,6 +152,19 @@
         </section>
     </main>
 
+    <!-- Modal for enlarged image and item details -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="" class="modal-image">
+            <div class="modal-details">
+                <h2 id="modalItemName"></h2>
+                <p id="modalItemIngredients" class="modal-ingredients"></p>
+                <p id="modalItemPrice" class="modal-price"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Saj alreef. All rights reserved. | Open from Monday --> saturday  6am - 12pm</p>
@@ -194,6 +210,44 @@
 
         // Optional: Auto-play (changes slide every 5 seconds)
          setInterval(() => changeSlide(1), 3000);
+
+        // Modal functionality
+        function openModal(element) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalItemName = document.getElementById('modalItemName');
+            const modalItemIngredients = document.getElementById('modalItemIngredients');
+            const modalItemPrice = document.getElementById('modalItemPrice');
+
+            const image = element.querySelector('.item-image');
+            const name = element.querySelector('.item-name');
+            const ingredients = element.querySelector('.item-ingredients');
+            const price = element.querySelector('.item-price');
+
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+            modalItemName.textContent = name.textContent;
+            modalItemIngredients.textContent = ingredients.textContent;
+            modalItemPrice.innerHTML = price.innerHTML;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event && event.target.id !== 'imageModal') return;
+            
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
