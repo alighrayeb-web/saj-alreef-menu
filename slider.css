@@ -124,7 +124,7 @@ display: none;
 }
 
 .dot.active {
-    background: rgba(255, 255, 255, 1);
+    background: #2E86AB;
 }
 
 .dot:hover {
