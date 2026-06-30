@@ -110,6 +110,7 @@ display: none;
     gap: 10px;
     padding: 20px;
     background: linear-gradient(135deg, #2E86AB 0%, #F18F01 100%);
+    display:none;
 }
 
 .dot {
