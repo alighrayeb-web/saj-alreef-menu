@@ -169,6 +169,7 @@ body {
     margin-left: 1rem;
 }
 
+
 .manakesh-price {
     background-color: var(--accent-color);
     color: var(--white);
@@ -178,10 +179,9 @@ body {
     font-size: 1rem;
     white-space: nowrap;
     /*margin-left: 1rem;*/
-    position:absolute;
+    position:static;
     right:1.5rem;
     top:50%;
-    transform:translateY(-50%);
     
 }
 
